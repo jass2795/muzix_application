@@ -4,7 +4,9 @@ public class TrackAlreadltExistsException extends Exception
 {
     private String message;
 
-    public TrackAlreadltExistsException(){
+    public TrackAlreadltExistsException()
+    {
+
     }
 
     public TrackAlreadltExistsException(String message) {

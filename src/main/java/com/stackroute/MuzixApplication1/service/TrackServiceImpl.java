@@ -8,50 +8,47 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class TrackServiceImpl implements TrackService
-{
+public class TrackServiceImpl implements TrackService {
 
 
     TrackRepository trackRepository;
 
     @Autowired
-    public TrackServiceImpl(TrackRepository trackRepository)
-    {
+    public TrackServiceImpl(TrackRepository trackRepository) {
         this.trackRepository = trackRepository;
     }
 
     @Override
-    public Track updateTrack(Track track)
-    {
-        Track updatedTrack=trackRepository.save(track);
-    return updatedTrack;
+    public Track updateTrack(Track track) {
+        Track updatedTrack = trackRepository.save(track);
+        return updatedTrack;
     }
 
     @Override
 
-        public boolean deleteTrack(int id)
-    {
+    public boolean deleteTrack(int id) {
 
-            trackRepository.deleteById(id);
-            return true;
+        trackRepository.deleteById(id);
+        return true;
     }
 
 
     @Override
-    public Track saveTrack(Track track) throws TrackAlreadltExistsException
-    {
-        if(trackRepository.existsById(track.getId()))
-        {
+    public Track saveTrack(Track track) throws TrackAlreadltExistsException {
+        if (trackRepository.existsById(track.getId())) {
             throw new TrackAlreadltExistsException("TRACK ALREADY EXISTS");
         }
 
-      Track savedTrack=trackRepository.save(track);
-
-        if (savedTrack == null)
-        {
-            throw new TrackAlreadltExistsException("plz......  add any track");
-        }
-        return savedTrack;
+     //   Track savedTrack = trackRepository.save(track);
+//
+//        if (savedTrack == null)
+//        {
+//            throw new TrackAlreadltExistsException("plz......  add any track");
+//        }
+        else
+            {
+        return trackRepository.save(track);
+            }
     }
 
     @Override

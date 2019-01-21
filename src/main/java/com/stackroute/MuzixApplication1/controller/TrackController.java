@@ -2,6 +2,7 @@ package com.stackroute.MuzixApplication1.controller;
 
 
 import com.stackroute.MuzixApplication1.domain.Track;
+import com.stackroute.MuzixApplication1.exception.TrackAlreadltExistsException;
 import com.stackroute.MuzixApplication1.service.TrackService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,10 +30,11 @@ public class TrackController
 
 
     @PostMapping("track")
-    public ResponseEntity<?> saveTrack(@RequestBody Track track)
+    public ResponseEntity<?> saveTrack(@RequestBody Track track) throws TrackAlreadltExistsException
     {
 
         ResponseEntity responseEntity;
+        trackService.saveTrack(track);
         responseEntity = new ResponseEntity<Track>(track, HttpStatus.CREATED);
 //        try {
 //            trackService.saveTrack(track);//call to savetrack passing the track object received from
